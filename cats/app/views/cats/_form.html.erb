@@ -1,12 +1,13 @@
 <%if edit%>
-<%action=cat_url(cat)%>
+<%action= cat_url(cat) %>
 <%else%>
-<%action=cats_url%>
+    <%action= cats_url%>
 <%end%>
 
-<form action=“<%action%>” method="POST">
+<% debugger %>
+<form action=“<%= action %>” method="POST">
 <%if edit%>
-<input type="hidden" name="_methods" value="PATCH">
+<input type="hidden" name="_method" value="PATCH">
 <%end%>
 
 <label for="name">Cat Name</label>

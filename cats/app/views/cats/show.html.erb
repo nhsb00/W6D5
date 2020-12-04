@@ -1,0 +1,11 @@
+<h1>One single cat</h1>
+
+<li>
+  <%= @cat.name %>
+  <a href="<%= edit_cat_url(@cat) %>">Edit </a>
+
+  <form action="<%= cat_url(@cat.id) %>" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="Delete this cat">
+  </form>
+</li> 
