@@ -5,17 +5,17 @@ class CatsController < ApplicationController
     end
 
     def show
-         @cats = Cat.find(params[:id])
+         @cat = Cat.find(params[:id])
          render :show
     end
 
     def new 
-        @cats = Cats.new
+        @cat = Cat.new
         render :new
     end
 
     def create
-        cat = Cat.new(post_params)
+        cat = Cat.new(cat_params)
         if cat.save
             redirect_to cat_url(cat)
         else
@@ -24,8 +24,8 @@ class CatsController < ApplicationController
     end
 
     private 
-    def post_params
-        params.require(:post).permit(:body, :author_id)
+    def cat_params
+        params.require(:cat).permit(:birth_date, :color, :name, :sex, :description)
     end
 
 end
