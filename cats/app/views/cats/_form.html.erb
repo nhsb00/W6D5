@@ -1,33 +1,44 @@
-<form action=“/cats” method="POST">
+<%if edit%>
+<%action=cat_url(cat)%>
+<%else%>
+<%action=cats_url%>
+<%end%>
+
+<form action=“<%action%>” method="POST">
+<%if edit%>
+<input type="hidden" name="_methods" value="PATCH">
+<%end%>
+
 <label for="name">Cat Name</label>
-<input type="text" name="cat[name]" id="name">
+<input type="text" name="cat[name]" id="name" value="<%=@cat.name%>"> 
 <br>
 
 <label for="M">Male</label>
-<input type="radio" name="cat[sex]" id="M">
+<input type="radio" name="cat[sex]" value="M" <%=@cat.sex=="M"?"checked":""%> id="M">
 <label for="F">Female</label>
-<input type="radio" name="cat[sex]" id="F">
+<input type="radio" name="cat[sex]" value="F" <%=@cat.sex=="F"?"checked":""%>   id="F">
 
 <br>
 
 <label for="color">Choose Any Color</label>
 <select name="cat[color]" id="color">
 <option disabled selected>-- Choose A Color --</option>
-<option value="black">black</option>
-<option value="white">white</option>
-<option value="brown">brown</option>
-<option value="orange">orange</option>
+<option value="black" <%=@cat.color=="black"?"selected":""%> >black</option>
+<option value="white" <%=@cat.color=="white"?"selected":""%> >white</option>
+<option value="brown" <%=@cat.color=="brown"?"selected":""%> >brown</option>
+<option value="orange" <%=@cat.color=="orange"?"selected":""%> >orange</option>
 </select>
+
 
 <br>
 
 <label for='date'>Birth Date</label>
-<input id="date" type="date" name="cat[birth_date]">
+<input id="date" type="date" name="cat[birth_date]" value="<%=@cat.birth_date%>">
 
 <br>
 
-<label for="description">Description</label>
-<textarea name="cat[description]" id="description"></textarea>
+<label for="description" >Description</label>
+<textarea name="cat[description]" id="description" value="<%=@cat.description%>"><%=@cat.description%></textarea>
 
 <input type="submit" value="submit">
 
